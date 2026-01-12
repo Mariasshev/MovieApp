@@ -44,6 +44,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         Glide.with(context)
                 .load(movie.getPosterPath())
                 .into(holder.poster);
+
+       holder.itemView.setOnClickListener(v -> {
+            android.content.Intent intent = new android.content.Intent(context, com.example.movieguide.DetailActivity.class);
+
+            intent.putExtra("title", movie.getTitle());
+            intent.putExtra("overview", movie.getOverview());
+            intent.putExtra("poster", movie.getPosterPath());
+            intent.putExtra("rating", movie.getVoteAverage());
+
+            context.startActivity(intent);
+        });
     }
 
     @Override
