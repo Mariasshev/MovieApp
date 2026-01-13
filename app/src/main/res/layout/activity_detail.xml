@@ -39,14 +39,17 @@
 
         <ImageButton
             android:id="@+id/btnFavorite"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_margin="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_favorite"
+            android:src="@drawable/heart_outline"
+            android:scaleType="fitCenter"
             android:contentDescription="Додати в улюблене"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
 
         <TextView
             android:id="@+id/detailTitle"
@@ -54,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="Title"
+            android:fontFamily="@font/montserrat_medium"
             android:textColor="#FFFFFF"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -65,6 +69,7 @@
             android:id="@+id/detailRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
             android:layout_marginTop="8dp"
             android:text="⭐ 8.5"
             android:textColor="#FFC107"
@@ -79,11 +84,74 @@
             android:layout_marginTop="16dp"
             android:lineSpacingExtra="4dp"
             android:text="Description..."
+            android:fontFamily="@font/montserrat_regular"
             android:textColor="#DDDDDD"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/detailTitle"
             app:layout_constraintStart_toStartOf="@id/detailTitle"
             app:layout_constraintTop_toBottomOf="@id/detailRating" />
+
+        <TextView
+            android:id="@+id/labelMyReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Моя рецензія"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/detailTitle"
+            app:layout_constraintTop_toBottomOf="@id/detailOverview" />
+
+        <RatingBar
+            android:id="@+id/ratingBarUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:isIndicator="false"
+            android:progressTint="#FFC107"
+            app:layout_constraintStart_toStartOf="@id/detailTitle"
+            app:layout_constraintTop_toBottomOf="@id/labelMyReview" />
+
+        <EditText
+            android:id="@+id/inputComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="#2A2A2A"
+            android:gravity="top"
+            android:fontFamily="@font/montserrat_regular"
+            android:hint="Напишіть свої враження тут..."
+            android:inputType="textCapSentences|textMultiLine"
+            android:minLines="3"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/detailTitle"
+            app:layout_constraintTop_toBottomOf="@id/ratingBarUser" />
+
+        <Button
+            android:id="@+id/btnSaveReview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="#E50914"
+            android:text="Зберегти в щоденник"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/inputComment"
+            app:layout_constraintStart_toStartOf="@id/inputComment"
+            app:layout_constraintTop_toBottomOf="@id/inputComment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -33,6 +33,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="Назва фільму"
+            android:fontFamily="@font/montserrat_medium"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"

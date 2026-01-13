@@ -14,16 +14,42 @@ import com.bumptech.glide.Glide;
 import com.example.movieguide.R;
 import com.example.movieguide.models.Movie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private Context context;
     private List<Movie> movieList;
+    private List<Movie> moviesFull;
 
     public MovieAdapter(Context context, List<Movie> movieList) {
         this.context = context;
         this.movieList = movieList;
+        this.moviesFull = new ArrayList<>(movieList);
+    }
+
+    public void setMovies(List<Movie> newMovies) {
+        this.movieList = newMovies;
+        this.moviesFull = new ArrayList<>(newMovies);
+        notifyDataSetChanged();
+    }
+
+    // Метод фільтрації
+    public void filterList(String text) {
+        movieList.clear();
+
+        if (text.isEmpty()) {
+            movieList.addAll(moviesFull);
+        } else {
+            text = text.toLowerCase();
+            for (Movie item : moviesFull) {
+                if (item.getTitle().toLowerCase().contains(text)) {
+                    movieList.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -52,6 +78,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             intent.putExtra("overview", movie.getOverview());
             intent.putExtra("poster", movie.getPosterPath());
             intent.putExtra("rating", movie.getVoteAverage());
+           intent.putExtra("id", movie.getId());
 
             context.startActivity(intent);
         });
